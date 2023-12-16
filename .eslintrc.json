@@ -11,6 +11,7 @@
   },
   "rules": {
     "quotes": "off",
-    "object-curly-spacing": "off"
+    "object-curly-spacing": "off",
+    "require-jsdoc": 0
   }
 }
