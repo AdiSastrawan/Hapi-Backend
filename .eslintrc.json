@@ -12,6 +12,7 @@
   "rules": {
     "quotes": "off",
     "object-curly-spacing": "off",
-    "require-jsdoc": 0
+    "require-jsdoc": 0,
+    "semi": "off"
   }
 }
