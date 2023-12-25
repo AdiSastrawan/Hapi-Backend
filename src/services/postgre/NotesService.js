@@ -6,7 +6,9 @@ const NotFoundError = require("../../exception/NotFoundError")
 
 class NotesService {
   constructor() {
-    this._pool = new Pool()
+    this._pool = new Pool({
+      
+    })
   }
   async addNote({ title, body, tags }) {
     const id = nanoid(16)
