@@ -7,18 +7,27 @@ class UsersHandler {
   }
 
   async postUserHandler(request, h) {
-    this.validator.validateUserPayload(request.payload);
-    const { fullname, password, username } = request.payload
-    const result = await this.service.addUser({ fullname, password, username })
-    const response = h.response({
-      status: 'success',
-      message: 'User berhasil ditambahkan',
-      data: {
-        userId: result,
-      },
-    })
-    response.code(201)
-    return response
+    try {
+      this.validator.validateUserPayload(request.payload);
+      const { fullname, password, username } = request.payload
+      const result = await this.service.addUser({ fullname, password, username })
+      const response = h.response({
+        status: 'success',
+        message: 'User berhasil ditambahkan',
+        data: {
+          userId: result,
+        },
+      })
+      response.code(201)
+      return response
+    } catch (error) {
+      const response = h.response({
+        status: 'fail',
+        message: error.message,
+      })
+      response.code(error.statusCode)
+      return response
+    }
   }
   async getUserByIdHandler(request, h) {
     const { id } = request.params;

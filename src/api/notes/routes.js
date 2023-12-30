@@ -3,11 +3,17 @@ const routes = (handler) => [
     path: "/notes",
     method: "POST",
     handler: handler.postNoteHandler,
+    options: {
+      auth: "notesapp_jwt",
+    },
   },
   {
     path: "/notes",
     method: "GET",
     handler: handler.getNotesHandler,
+    options: {
+      auth: "notesapp_jwt",
+    },
   },
   {
     path: "/notes/{id}",
